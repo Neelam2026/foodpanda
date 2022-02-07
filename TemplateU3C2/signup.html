@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form,h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Signup page</h1>
+    <form>
+        name;<input type="text" placeholder="enter name" id="name">
+        <br>
+        <br>
+       email: <input type="text" placeholder="enter email" id="email">
+       
+       <br>
+       <br>
+        Mobile:<input type="number" placeholder="enter mobile" id="mobile">
+        <br>
+        <br>
+        Password<input type="password" placeholder="enter password"  id="pass">
+        <br>
+        <br>
+        <input type="submit" >
+    </form>
+</body>
+</html>
+<script>
+    document.querySelector("form").addEventListener("submit",sign)
+    userinfo=JSON.parse(localStorage.getItem("userdb"))||[]
+    function sign(e){
+        e.preventDefault()
+        var nm=document.getElementById("name").value
+    var e=document.getElementById("email").value
+    var um=document.getElementById("mobile").value
+    var ps=document.getElementById("pass").value
+
+    userstack={
+        name:nm,
+        no:um,
+        email:e,
+        pass:ps,
+
+    }
+    userinfo.push(userstack)
+    localStorage.setItem("userdb",JSON.stringify(userinfo))
+    alert("signup successful")
+    window.location.href="login.html"
+   
+    }
+
+</script>

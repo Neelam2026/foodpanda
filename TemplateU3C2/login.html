@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        form,h1{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <h1>Login page</h1>
+    <form>
+    <input type="text" placeholder="enter email" id="email">
+    <br>
+    <br>
+    <input type="password" placeholder="enter password">
+    <br>
+    <br>
+    <input type="submit" >
+</form>
+</body>
+</html>
+<script> 
+document.querySelector("form").addEventListener("submit",login)
+var reguser=JSON.parse(localStorage.getItem("userdb"))
+function login(e){
+    e.preventDefault() 
+    var email=document.getElementById("email").value
+    
+    var pass=document.getElementById("pass").value
+    for(i=0;i<reguser.length;i++)
+    {
+        if(reguser[i].email==email && reguser[i].pass==pass){
+            alert("login successful")
+            window.location.href="index.html"
+            break;
+        }
+        else if(reguser.length-1==i){
+          alert("wrong information")
+        }
+
+        
+    }
+}
+</script>
